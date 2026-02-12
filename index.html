@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Threat Message Detection AI</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div>
+          <h1>Threat Message Detection AI</h1>
+          <p class="subtitle">Multi-layer intent analysis for proactive moderation</p>
+        </div>
+        <span id="statusBadge" class="status-badge status-safe">SYSTEM READY</span>
+      </header>
+
+      <main class="dashboard-grid">
+        <section class="panel input-panel">
+          <h2>Message Input</h2>
+          <p class="panel-hint">Paste a single message or full chat log for threat intent analysis.</p>
+
+          <div class="sample-actions">
+            <button class="sample-btn" data-sample="safe">Safe Sample</button>
+            <button class="sample-btn" data-sample="suspicious">Suspicious Sample</button>
+            <button class="sample-btn" data-sample="critical">High-Risk Sample</button>
+          </div>
+
+          <textarea
+            id="messageInput"
+            rows="12"
+            placeholder="Example: We are going to meet near the station tomorrow night. Bring the device and keep this secret."
+          ></textarea>
+
+          <div class="input-actions">
+            <button id="analyzeBtn" class="primary-btn">Analyze Message</button>
+            <span id="analysisState" class="analysis-state">Awaiting input...</span>
+          </div>
+        </section>
+
+        <section class="panel results-panel">
+          <h2>Analysis Results</h2>
+
+          <div class="risk-score-block">
+            <div class="risk-label-row">
+              <span>Risk Score</span>
+              <strong id="riskScoreText">0 / 100</strong>
+            </div>
+            <div class="risk-meter">
+              <div id="riskMeterFill" class="risk-meter-fill"></div>
+            </div>
+          </div>
+
+          <div class="result-cards">
+            <article class="result-card">
+              <h3>Threat Level</h3>
+              <p id="threatLevelText">LOW</p>
+            </article>
+            <article class="result-card">
+              <h3>Category</h3>
+              <p id="threatCategoryText">Safe</p>
+            </article>
+            <article class="result-card">
+              <h3>Confidence</h3>
+              <p id="confidenceText">0%</p>
+            </article>
+          </div>
+
+          <div class="alert-priority">
+            <span>Alert Priority</span>
+            <strong id="priorityBadge" class="priority-badge priority-safe">GREEN - SAFE</strong>
+          </div>
+        </section>
+
+        <section class="panel explainability-panel">
+          <h2>Explainability</h2>
+          <ul id="indicatorsList" class="indicators-list">
+            <li>No indicators detected yet.</li>
+          </ul>
+        </section>
+
+        <section class="panel history-panel">
+          <h2>Recent Scans</h2>
+          <ul id="historyList" class="history-list">
+            <li>No scans performed yet.</li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
+    <script src="analysisEngine.js"></script>
+    <script src="uiController.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
